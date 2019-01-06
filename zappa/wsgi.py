@@ -15,7 +15,7 @@ if sys.version_info[0] < 3:
 else:
     from urllib.parse import urlencode
 
-from .utilities import titlecase_keys, transform_multi_value_dict
+from .utilities import titlecase_keys
 
 BINARY_METHODS = [
                     "POST",
@@ -97,7 +97,7 @@ def create_wsgi_request(event_info,
 
         # Related: https://github.com/Miserlou/Zappa/issues/1508
         if multi_query:
-            query_string = urlencode(transform_multi_value_dict(multi_query))
+            query_string = urlencode(multi_query, True)
         elif query:
             query_string = urlencode(query)
         else:

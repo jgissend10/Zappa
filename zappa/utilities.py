@@ -529,14 +529,6 @@ def titlecase_keys(d):
     return {k.title(): v for k, v in d.items()}
 
 
-def transform_multi_value_dict(multi_value_dict):
-    """
-    Takes a dict with values of type list and returns a tuple of key, value pairs
-    """
-    keys, values = zip(*multi_value_dict.items())
-    return tuple(next(zip(keys, v)) for v in itertools.product(*values))
-
-
 # https://github.com/Miserlou/Zappa/issues/1688
 def is_valid_bucket_name(name):
     """
